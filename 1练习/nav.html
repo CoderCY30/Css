@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+    body,ul,li {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    a {
+        text-decoration: none;
+        color: #000
+    }
+    
+    #nav {
+        width: 1000px;
+        margin: 0 auto;
+    }
+    
+    #nav > li {
+        float: left;
+        width: 198px;
+        border: 1px solid deepskyblue;
+        background: skyblue;
+        line-height: 40px;
+        text-align: center;
+        position: relative;
+    }
+    
+    #nav > li > ul {
+        position: absolute;
+        width: 100%;
+    }
+    
+    #nav > li > ul {
+        display: none;
+    }
+    
+    #nav > li.show ul{
+        display: block;
+    }
+    
+    #nav > li > ul li {
+        background: skyblue;
+        line-height: 40px;
+        text-align: center;
+    }
+    </style>
+</head>
+
+<body>
+    <ul id="nav">
+        <li>
+            <a href="">index</a>
+            <ul>
+                <li>second1</li>
+                <li>second2</li>
+                <li>second3</li>
+            </ul>
+        </li>
+        <li>about
+            <ul>
+                <li>second1</li>
+                <li>second2</li>
+                <li>second3</li>
+            </ul>
+        </li>
+        <li>products</li>
+        <li>news</li>
+        <li>contact</li>
+    </ul>
+    <script type="text/javascript">
+    	function nav(id){
+    		var ul = document.getElementById("nav");
+    		for(var i =0; i<ul.childNodes.length; i++){
+    			li = ul.childNodes[i];
+    			if(li.nodeName == "LI" && li.getElementsByTagName("ul").length){
+    				li.onmouseover = function(){
+    					this.className ="show"; 
+    				}
+    				li.onmouseout = function(){
+    					this.className = this.className.replace("show","");
+    				}
+    			}
+    		}
+    	};
+    	nav();
+    </script>
+    
+</body>
+
+</html>

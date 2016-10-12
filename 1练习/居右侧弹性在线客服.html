@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="http://www.softwhy.com/" />
+    <title></title>
+    <style type="text/css">
+    body {
+        height: 2000px;
+    }
+    
+    #antzone {
+        width: 200px;
+        height: 200px;
+        background: aquamarine;
+        position: absolute;
+        right: 0px;
+        bottom: 0px;
+    }
+    </style>
+    <script type="text/javascript">
+    window.onload = function() {
+        window.onscroll = function() {
+            var odiv = document.getElementById("antzone");
+            var scroll = document.documentElement.scrollTop || document.body.scrollTop;
+            starmove((document.documentElement.clientHeight - odiv.offsetHeight) + scroll);
+            console.log(document.documentElement.clientHeight);
+        }
+        var timer = null;
+
+        function starmove(itarget) {
+            var odiv = document.getElementById('antzone');
+            timer = clearInterval(timer);
+            timer = setInterval(function() {
+                var speed = (itarget - odiv.offsetTop) / 6;
+                speed = speed > 0 ? Math.ceil(speed) : Math.floor(speed);
+                odiv.style.top = odiv.offsetTop + speed + 'px';
+            }, 30);
+        }
+    };
+    </script>
+</head>
+
+<body>
+	<div style="position: absolute; bottom:100px;"></div>
+    <div id="antzone"></div>
+    
+</body>
+
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		body,ul,li{margin:0;padding: 0; list-style: none;}
+		#box{background:skyblue; width:300px; height: 100%; float: left; margin-left: -300px;}
+		ul{height: 100%;}
+		li{width:100%; line-height: 40px; border-bottom: 1px solid deepskyblue; text-align: center;}
+	</style>
+</head>
+<body>
+	<div id="box">
+		<ul>
+			<li>ont</li>
+			<li>two</li>
+			<li>three</li>
+			<li>four</li>
+			<li>five</li>
+		</ul>
+	</div>
+	<span id="btn">点击</span>
+	<script type="text/javascript">
+		function nav(){
+			var oBox = document.getElementById("box");
+			var oBtn = document.getElementById("btn");
+			function addEvent (ele,type,fn){
+				if(ele.addEventListener){
+					ele.addEventListener(type,fn,false);
+				}else if(ele.attachEvent){
+					ele.attachEvent(ele,"on"+type,fn);
+				}else{
+					ele["on"+type] = fn;
+				}
+			}
+			addEvent(btn,"click",fnMove);
+			function fnMove(){
+				var oLeft = parseInt(oBox.offsetLeft);
+				if(oLeft == -300){
+					animate(10);
+				}else{
+					animate1(-10);
+				}
+			}
+			function animate(speen){
+				var t = setInterval(function(){
+					var oLeft = parseInt(oBox.offsetLeft);
+					if((oLeft = -300 && oLeft < 0)){
+						oBox.style.marginLeft = oBox.offsetLeft +speen +"px";
+					}else{
+						clearInterval(t)
+					}
+				},15)
+			}
+			function animate1(speen){
+				var t = setInterval(function(){
+					var oLeft = parseInt(oBox.offsetLeft);
+					if((oLeft > -300 && oLeft <= 0)){
+						oBox.style.marginLeft = oBox.offsetLeft +speen +"px";
+					}else{
+						clearInterval(t)
+					}
+				},15)
+			}
+		}
+		nav();
+		
+	</script>
+</body>
+</html>

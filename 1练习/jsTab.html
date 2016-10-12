@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+	<style>
+		@import "style.sass";
+		body,ul, li{margin:0; padding: 0;}
+		.clear{clear: both;}
+		#Tab{width:800px; margin:50px auto;}
+		#Tab-nav{overflow: hidden;}
+		#Tab ul li{float: left; width:198px; text-align: center; background: skyblue; line-height: 40px; list-style: none; border:1px solid #ccc; cursor: pointer;}
+		#Tab ul li.current{background:deepskyblue;}
+		#content div{width:798px; height: 300px; border:1px solid #ccc; display: none;}
+		#content div.active{display: block;}
+	</style>
+</head>
+<body>
+	<div id="Tab">
+		<div id="Tab-nav">
+			<ul>
+				<li class="current">one</li>
+				<li>two</li>
+				<li>three</li>
+				<li>four</li>
+			</ul>
+		</div>
+		<div id="content">
+			<div class="active">one content</div>
+			<div>two content</div>
+			<div>three content</div>
+			<div>four content</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		function tab(){
+			var li = document.getElementById("Tab-nav").document.getElementsByTagName("li");
+			var div = document.getElementById("content").getElementsByTagName("div");
+			for(var i = 0;i<li.length;i++){
+				li[i].index = i;
+				li[i].onclick = function(){
+					for(var j =0;j<li.length;j++){
+						li[j].className = "";
+						li[j].style = " #000";
+						div[j].className = "";
+					}
+					li[this.index].className = "current";
+					li[this.index].style.color = "#fff";
+					div[this.index].className = "active";
+				}
+			}
+		}
+		tab();
+	</script>
+</body>
+</html>

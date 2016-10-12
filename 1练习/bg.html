@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<style type="text/css">
+div{
+    width: 210px;
+    height: 70px;
+    background: skyblue;
+}
+</style>
+
+<body>
+    <div class="a"></div>
+    <div class="a"></div>
+    <div class="a"></div>
+    <script type="text/javascript">
+    function changeC() {
+        var arr = []; 
+        var color = "0123456789abcdef";
+        var i = 0;
+        while (i++ < 6) {
+            var rc = Math.random() * 16;
+            var mrc = parseInt(rc);
+            var crc = color.substr(mrc, 1);
+            arr.push(crc);
+        }
+        var cl = "#" + arr.join('');
+        return cl;
+    }
+	function setb(ele) {
+        var div = document.getElementsByTagName(ele);
+        for(var i =0;i<div.length;i++){
+        	div[i].style.backgroundColor = changeC();
+        }
+    }
+    window.onload = function() {
+        var t= setInterval(function(){
+			setb("div");
+        },800);
+    }
+    </script>
+    
+</body>
+
+</html>

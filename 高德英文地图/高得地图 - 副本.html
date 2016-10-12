@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Contact us | Chengda International</title>
+    <style type="text/css">
+        #iCenter{
+            width: 938px;
+            height: 220px;
+        }
+    </style>
+</head>
+
+<body onLoad="mapInit()">
+        <link rel="stylesheet" type="text/css" href="map.css" />
+        <script language="javascript" src="http://webapi.amap.com/maps?v=1.3&key=4474afb0634aec419e0457a4ecf4e768"></script>
+        <script language="javascript">
+        var mapObj;
+        //初始化地图对象，加载地图
+        function mapInit() {
+            mapObj = new AMap.Map("iCenter", {
+                rotateEnable: true,
+                dragEnable: true,
+                zoomEnable: true,
+                isHotspot:true,
+                //二维地图显示视口
+                view: new AMap.View2D({
+                    center: new AMap.LngLat(121.485443,38.978279), //地图中心点
+                    zoom: 18, //地图显示的缩放级别
+
+                })
+            });
+
+            //创建信息窗体
+            var info = [];
+            info.push("<div><img style=\"float:left;margin:20px 20px 50px 20px;\" src=\" http://www.wanghaibin.com/web/chengda/skins/pc/images/logo49X44.jpg \"/></div> ");
+            info.push("<div style=\"padding:0px 0px 0px 4px;\"><b  style=\"line-height:40px; font-size:18px;\">Chengda Building</b>");
+            info.push("TEL：+86-411-8251-2499");
+            info.push("Address：＃71 Renmin Road, Dalian, Liaoning, China</div>");
+
+            inforWindow = new AMap.InfoWindow({
+                content: info.join("<br/>")
+            });
+            inforWindow.open(mapObj, new AMap.LngLat(121.485443,38.978279)); //在地图上打开信息窗体
+            mapObj.setLang("en");
+
+        }
+        </script>
+        <div id="iCenter" style=""></div>
+</body>
+
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style type="text/css">
+    body,
+    ul,
+    li {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+    a{text-decoration: none;}
+    ul {
+        width: 200px;
+        margin: 0 auto;
+    }
+    
+    li {
+        background: skyblue;
+        line-height: 40px;
+        padding-left: 10px;
+        position: relative;
+    }
+    li>a{
+    	display: block;
+        width: 100%;
+    }
+    li>a.active{
+    	color:red;
+    }
+    a:link{color:#000;}
+    a:visited{color:#000;}
+    a:hover{color:#000;}
+    a:active{color:#000;}
+    div {
+        text-decoration: none;
+        background: green;
+        margin-left: -10px;
+        display: none;
+    }
+    
+    div a {
+        padding-left: 10px;
+    }
+    </style>
+    <script type="text/javascript" src="jquery.js"></script>
+</head>
+
+<body>
+    <ul>
+        <li>
+            <a href="baidu.com">Index</a>
+            <div class="second">
+                <a href="">S-index</a>
+            </div>
+        </li>
+        <li>
+        	<a href="http://www.baidu.com">About</a>
+        </li>
+        <li>
+            <a href="">News</a>
+            <div class="second">
+                <a href="http://www.taobao.com">S-news</a>
+            </div>
+        </li>
+        <li><a href="">Products</a></li>
+    </ul>
+    <script type="text/javascript">
+    $("li > a").click(function(event) {
+    	$(this).addClass("active");
+    	$(this).parent($("li")).siblings().find("a").removeClass("active");
+        $(this).next($(".second")).stop().slideDown();
+        $(this).parent($("li")).siblings().find($(".second")).stop().slideUp().removeClass("active");
+        if ($(this).next($("div.second")).length > 0) {
+            return false;
+        } else {
+            return true;
+        }
+    });
+    </script>
+</body>
+
+</html>

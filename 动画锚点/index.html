@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <script src="http://libs.baidu.com/jquery/1.7.0/jquery.min.js"></script>
+    <style type="text/css">
+        body {
+        font-size:12px;
+        }
+        #scroll {
+        position:fixed; top:300px; right:100px;
+        }
+        
+        .scrollItem {
+        width:20px; height:70px;border:#e1e1e1 1px solid; cursor:pointer; text-align:center; padding-top:10px;
+        }
+    </style>
+    <script type="text/javascript">
+        $(function () {
+            var speed = 800;//滚动速度
+			var h=document.body.clientHeight;
+			
+            //回到顶部
+            $("#toTop").click(function () {
+			  	$('html,body').animate({
+					scrollTop: '0px'
+				},
+				speed);			
+            });
+            //回到底部
+            var windowHeight = parseInt($("body").css("height"));//整个页面的高度
+            $("#toBottom").click(function () {
+				//alert(h);
+                $('html,body').animate({
+					scrollTop: h+'px'
+				},
+				speed);
+            });
+            
+
+        });
+    </script>
+
+</head>
+<body>
+    <div style="height:1000px;"></div>
+    <p id="liuyan">这里是留言位置，回到这儿来额</p>
+    <div style="height:1000px;"></div>
+    <div id="scroll">
+        <div class="scrollItem" id="toTop">回到顶部</div>
+        <div class="scrollItem" id="toBottom">回到顶部</div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>弹性返回顶部JS代码</title>
+<style type="text/css">
+/*返回顶部*/
+#gotopbtn 
+{width:55px; height:54px; background: url("Images/gotop.png") no-repeat; position:fixed; z-index:9999999;
+bottom:50px; right:20px; display:none; cursor:pointer; _position:absolute; _right:20px;
+_top:expression(offsetParent.scrollTop + document.documentElement.clientHeight - this.offsetHeight - 50);}
+</style>
+</head>
+<body>
+
+<div>弹性返回顶部JS代码</div>
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+<div id="gotopbtn" style="display:block;"></div>
+<script type="text/javascript">
+	backTop = function (btnId){
+	var btn=document.getElementById(btnId);
+	var d=document.documentElement;
+	window.onscroll = set;
+	var timer=null
+	btn.onclick=function (){
+		btn.style.display="none";
+		window.onscroll=null;
+		this.timer=setInterval(function(){
+			d.scrollTop-=Math.ceil(d.scrollTop*0.1);
+			if(d.scrollTop==0) clearInterval(btn.timer,window.onscroll=set);
+		},10);
+	};
+	function set(){
+		btn.style.display=d.scrollTop ? 'block' : "none";
+	}
+};
+backTop('gotopbtn');
+</script>
+</body>
+</html>
